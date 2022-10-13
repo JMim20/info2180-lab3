@@ -26,7 +26,8 @@ window.onload=function()
         console.log(sq);
         sq.addEventListener("click", clicksquare);
        //squares[sq].onclick=function(){squares[sq].classList.add("X")};
-        
+       sq.addEventListener("mouseover", hoverSquare);
+       sq.addEventListener("mouseout", hoverSquare);
     }
     
 
@@ -34,7 +35,7 @@ window.onload=function()
 
 function clicksquare(event){
     index = Array.from(squares).indexOf(event.target);
-    console.log(index+ "i");
+
     
     if(player==="X"){
         squares[index].classList.add("X");
@@ -45,4 +46,14 @@ function clicksquare(event){
         squares[index].innerHTML="O";
         player="X";
     }
+}
+
+function hoverSquare(event){
+    index = Array.from(squares).indexOf(event.target);
+    if(event.type=="mouseover"){
+        squares[index].classList.add("hover");
+    }else if(event.type=="mouseout"){
+        squares[index].classList.remove("hover");
+    }
+
 }
