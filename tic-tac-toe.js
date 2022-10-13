@@ -1,5 +1,8 @@
 
 let squares;
+let player="X";
+let playerArray =[[,,,,],[,,,,]];
+
 window.onload=function()
     //console.log("....");
 {
@@ -8,8 +11,8 @@ window.onload=function()
         let board=document.getElementById("board");
        // let squares=board.children;
        squares=board.children; 
-    //console.log(board);
-    //line 11
+        //console.log(board);
+        //line 11
     
    
 
@@ -21,7 +24,7 @@ window.onload=function()
     for (let sq of squares){
         sq.classList.add("square");
         console.log(sq);
-        //sq.addEventListener("click", clicksquare);
+        sq.addEventListener("click", clicksquare);
        //squares[sq].onclick=function(){squares[sq].classList.add("X")};
         
     }
@@ -31,6 +34,15 @@ window.onload=function()
 
 function clicksquare(event){
     index = Array.from(squares).indexOf(event.target);
-    console.log(index);
+    console.log(index+ "i");
     
+    if(player==="X"){
+        squares[index].classList.add("X");
+        squares[index].innerHTML="X";
+        player="O";
+    }else{
+        squares[index].classList.add("O");
+        squares[index].innerHTML="O";
+        player="X";
+    }
 }
